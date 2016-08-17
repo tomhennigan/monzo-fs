@@ -1,0 +1,11 @@
+.DS_Store
+.project
+.pydevproject
+.Python
+mondo_fs.egg-info/
+bin
+lib
+include
+pip-selfcheck.json
+MANIFEST
+dist/

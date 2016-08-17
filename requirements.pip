@@ -1,0 +1,4 @@
+requests>=2.11.1
+fusepy>=2.0.4
+rfc3339
+iso8601
