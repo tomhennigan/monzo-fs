@@ -2,15 +2,15 @@
 
 mondo-fs is a [FUSE](https://github.com/libfuse/libfuse) file system that allows you to walk through a [Mondo](http://getmondo.co.uk) account and associated transactions as if they were files and folders.
 
-mondo-fs is also:
+mondo-fs is:
 
-* **alpha quality**: works for me, ymmv, it might break as Mondo change their API or for other random reasons.
-* **simple**: we follow the Mondo API's structure to make your account easy to navigate.
+* **alpha quality**: it works for me but ymmv, it might break as Mondo change their API or for other random reasons.
+* **simple**: it roughly follows the Mondo API's structure to make your account easy to navigate.
 * **powerful**: using the shell tools you know and love you can slice and dice all the information from your Mondo account and create compelling demos.
 * **read only**: this is not a huge limitation *imho*, and not something I'm likely to address in the near future, but being able to upload receipt images with drag-and-drop would be neat.
 * **a personal project**: this is not something related to my professional employment, or something I have copious time to work on and extend.
 
-mondo-fs builds upon the Mondo API, and makes use of some other excellent open source projects such as (but not limited to) [fusepy](https://github.com/terencehonles/fusepy), [FUSE](https://github.com/libfuse/libfuse), [rfc3339](https://pypi.python.org/pypi/rfc3339) and [iso8601](https://pypi.python.org/pypi/iso8601) libraries.
+mondo-fs builds upon the [Mondo API](https://getmondo.co.uk/docs/), and makes use of some other excellent open source projects such as (but not limited to) [fusepy](https://github.com/terencehonles/fusepy), [FUSE](https://github.com/libfuse/libfuse), [rfc3339](https://pypi.python.org/pypi/rfc3339) and [iso8601](https://pypi.python.org/pypi/iso8601) libraries.
 
 ## Getting started
 
