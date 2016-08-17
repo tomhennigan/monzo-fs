@@ -158,3 +158,7 @@ __EOF
     open /tmp/mondo-balance-${account}.png
 done
 ```
+
+**Example result:**
+
+![img](http://i.imgur.com/stASKCZ.png)
