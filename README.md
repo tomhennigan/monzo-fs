@@ -18,12 +18,12 @@ You will first need to install FUSE. Mac users `brew install fuse` is an easy op
 
 Once you have fuse installed:
 
-1) Create a [Mondo developer account](https://developers.getmondo.co.uk/).
-2) Create a [new oauth client](https://developers.getmondo.co.uk/apps/new) with `http://localhost:1234/` listed as a "Redirect URL". Note the client id and secret (you need them later).
-3) Install mondo-fs: `$ pip install mondo-fs`
-6) Run mondo-fs: `$ mondo-fs /tmp/mondo --client_id=<yours> --client_secret=<yours>`.
-7) Run through the oauth dance (click the link in terminal, put in your email, click the link in your email, go back to terminal).
-8) You're good to go, mondo-fs is mounted on `/tmp/mondo`!
+  1) Create a [Mondo developer account](https://developers.getmondo.co.uk/).
+  2) Create a [new oauth client](https://developers.getmondo.co.uk/apps/new) with `http://localhost:1234/` listed as a "Redirect URL". Note the client id and secret (you need them later).
+  3) Install mondo-fs: `$ pip install mondo-fs`
+  4) Run mondo-fs: `$ mondo-fs /tmp/mondo --client_id=<yours> --client_secret=<yours>`.
+  5) Run through the oauth dance (click the link in terminal, put in your email, click the link in your email, go back to terminal).
+  6) You're good to go, mondo-fs is mounted on `/tmp/mondo`!
 
 ### tl;dr
 
