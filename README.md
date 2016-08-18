@@ -23,7 +23,7 @@ Once you have fuse installed:
 3. Install mondo-fs: `$ pip install mondo-fs`
 4. Run mondo-fs: `$ mondo-fs /tmp/mondo --client_id=<yours> --client_secret=<yours>`.
 5. Run through the oauth dance (click the link in terminal, put in your email, click the link in your email, go back to terminal).
-6. You're good to go, mondo-fs is mounted on `/tmp/mondo`!
+6. 🎉 You're good to go, mondo-fs is mounted on `/tmp/mondo`! 🎉
 
 ### tl;dr
 
@@ -74,7 +74,7 @@ True
 
 ## Examples
 
-Some random examples to get you started/excited. Basically it's possible to explore your transaction history in a pretty meaningful way by looking at it as a file system. mondo-fs is designed to be relatively efficient so you don't have to be (e.g. we cache requests) but not overly agressive so data is relatively fresh (e.g. caches live a few minutes for transactions).
+Some random examples to get you started/excited. Basically it's possible to explore your transaction history in a pretty meaningful way by looking at it as a file system. mondo-fs is designed to be relatively efficient so you don't have to be (e.g. we cache slow requests like listing transactions) but not overly agressive so data is relatively fresh (e.g. most caches live a few minutes).
 
 ### Retrieve your balance
 
