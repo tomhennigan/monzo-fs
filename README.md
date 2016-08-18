@@ -12,24 +12,11 @@ mondo-fs is:
 
 mondo-fs builds upon the [Mondo API](https://getmondo.co.uk/docs/), and makes use of some other excellent open source projects such as (but not limited to) [fusepy](https://github.com/terencehonles/fusepy), [FUSE](https://github.com/libfuse/libfuse), [rfc3339](https://pypi.python.org/pypi/rfc3339) and [iso8601](https://pypi.python.org/pypi/iso8601) libraries.
 
-## Getting started
+## tl;dr
 
-You will first need to install FUSE. Mac users `brew install fuse` is an easy option, Linux users should enjoy something as simple as `apt-get install fuse` and I have no idea how this (or anything) works on Windows.
+You need a [Mondo developer account](https://developers.getmondo.co.uk/) and [your own oauth client](https://developers.getmondo.co.uk/apps/new) with `http://localhost:1234` as a "Redirect URL".
 
-Once you have fuse installed:
-
-1. Create a [Mondo developer account](https://developers.getmondo.co.uk/).
-2. Create a [new oauth client](https://developers.getmondo.co.uk/apps/new) with `http://localhost:1234/` listed as a "Redirect URL". Note the client id and secret (you need them later).
-3. Install mondo-fs: `pip install mondo-fs`
-4. Run mondo-fs: `mondo-fs /tmp/mondo --client_id=<yours> --client_secret=<yours>`.
-5. Run through the oauth dance (click the link in terminal, put in your email, click the link in your email, go back to terminal).
-6. 🎉 You're good to go, mondo-fs is mounted on `/tmp/mondo`! 🎉
-
-### tl;dr
-
-You need a [Mondo developer account](https://developers.getmondo.co.uk/) and [oauth client](https://developers.getmondo.co.uk/apps/new) with `http://localhost:1234` as a "Redirect URL".
-
-Window 1 (install, mount):
+Terminal 1 (install fuse, install mondo-fs, mount):
 
 ```
 $ brew install fuse
@@ -38,7 +25,7 @@ $ mondo-fs /tmp/mondo --client_id=<yours> --client_secret=<yours>
 .. Follow the instructions on screen and then in your browser ..
 ```
 
-Window 2 (explore):
+Terminal 2 (explore):
 
 ```
 $ ls /tmp/mondo
@@ -71,6 +58,23 @@ $ cat /tmp/mondo/acc_00009Aq4VDixoGFnIxcBmr/transactions/2016/08/tx_00009Aq4fq7r
 $ cat /tmp/mondo/acc_00009Aq4VDixoGFnIxcBmr/transactions/2016/08/tx_00009Aq4fq7rt647A5pWLp/is_load
 True
 ```
+
+## Getting started
+
+You will first need to install FUSE. Mac users `brew install fuse` is an easy option, Linux users should enjoy something as simple as `apt-get install fuse` and I have no idea how this (or anything) works on Windows.
+
+Once you have fuse installed:
+
+1. Create a [Mondo developer account](https://developers.getmondo.co.uk/).
+2. Create a [new oauth client](https://developers.getmondo.co.uk/apps/new) with `http://localhost:1234/` listed as a "Redirect URL". Note the client id and secret (you need them later).
+3. Install mondo-fs: `pip install mondo-fs`
+4. Run mondo-fs: `mondo-fs /tmp/mondo --client_id=<yours> --client_secret=<yours>`.
+5. Run through the oauth dance (click the link in terminal, put in your email, click the link in your email, go back to terminal).
+6. 🎉 You're good to go, mondo-fs is mounted on `/tmp/mondo`! 🎉
+
+## Config
+
+mondo-fs stores state between starts in `~/.mondofs`. This file contains a valid oauth token so you don't have to constantly re-authorize everytime you restart the program.
 
 ## Examples
 
@@ -155,10 +159,28 @@ __EOF
 
     # 4) Profit?
     rm -f "/tmp/mondo-balance-${account}"
-    open /tmp/mondo-balance-${account}.png
+    open "/tmp/mondo-balance-${account}.png"
 done
 ```
 
 **Example result:**
 
 ![img](http://i.imgur.com/stASKCZ.png)
+
+## FAQ
+
+### Can this spend my mondough?
+
+Not at the moment (the Mondo API is read only). If [Mondo change this](https://trello.com/c/BwKL2zRy/31-initiate-payments-via-api) and the default oauth scope provides access to initiate payments then `mondo-fs` (or tokens granted by it) could theoretically do this.
+
+### Is this safe to use?
+
+Maybe, hopefully, probably not. I use it, you should make up your own mind. It's alpha.
+
+### What permissions are files/folders given?
+
+Files/folders have root:root as the owner (`{uid,gid} = 0`) and are world readable/listable.
+
+### How do I unmount?
+
+Easiest option is to `^C` the `mondo-fs` process. If you can't find it `pkill -f mondo-fs` might do it. Finally you can `umount -f /tmp/mondo` to kill the mount, but it's likely the `mondo-fs` process will hang around as a zombie.
