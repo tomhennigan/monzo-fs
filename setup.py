@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 
-from setuptools import setup
+import setuptools
 
-setup(name='mondo-fs',
+setuptools.setup(
+     name='mondo-fs',
      version='0.1.2',
      description='A FUSE file system for Mondo bank.',
      author='Tom Hennigan',
@@ -19,7 +20,7 @@ setup(name='mondo-fs',
             'mondo-fs = mondofs.__main__:main',
         ],
     },
-    packages=['mondofs'],
+    packages=setuptools.find_packages(),
     include_package_data=True,
     install_requires=['requests',
                       'fusepy>=2.0.4',
