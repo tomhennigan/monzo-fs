@@ -16,7 +16,7 @@ mondo-fs builds upon the [Mondo API](https://getmondo.co.uk/docs/), and makes us
 
 You need a [Mondo developer account](https://developers.getmondo.co.uk/) and [your own oauth client](https://developers.getmondo.co.uk/apps/new) with `http://localhost:1234` as a "Redirect URL".
 
-Terminal 1 (install fuse, install mondo-fs, mount):
+**Terminal 1 (install fuse, install mondo-fs, mount)**
 
 ```
 $ brew install fuse
@@ -25,7 +25,7 @@ $ mondo-fs /tmp/mondo --client_id=<yours> --client_secret=<yours>
 .. Follow the instructions on screen and then in your browser ..
 ```
 
-Terminal 2 (explore):
+**Terminal 2 (explore)**
 
 ```
 $ ls /tmp/mondo
