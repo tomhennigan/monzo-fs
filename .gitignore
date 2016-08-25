@@ -2,7 +2,8 @@
 .project
 .pydevproject
 .Python
-mondo_fs.egg-info/
+*.pyc
+monzo_fs.egg-info/
 bin
 lib
 include

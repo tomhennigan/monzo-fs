@@ -3,13 +3,13 @@
 import setuptools
 
 setuptools.setup(
-     name='mondo-fs',
-     version='0.1.2',
+     name='monzo-fs',
+     version='0.1.3',
      description='A FUSE file system for Mondo bank.',
      author='Tom Hennigan',
      author_email='tomhennigan@gmail.com',
      license='Apache 2.0',
-     url='https://github.com/tomhennigan/mondo-fs',
+     url='https://github.com/tomhennigan/monzo-fs',
      classifiers=['Development Status :: 3 - Alpha',
                    'Intended Audience :: Developers',
                    'Programming Language :: Python :: 2',
@@ -17,7 +17,7 @@ setuptools.setup(
                    ],
     entry_points={
         'console_scripts': [
-            'mondo-fs = mondofs.__main__:main',
+            'monzo-fs = monzo_fs.__main__:main',
         ],
     },
     packages=setuptools.find_packages(),

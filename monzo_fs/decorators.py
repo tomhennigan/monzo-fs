@@ -1,6 +1,6 @@
 # coding=utf8
 
-"""Utility functions and decorators used in mondo-fs."""
+"""Utility functions and decorators used in monzo-fs."""
 
 import datetime
 import json

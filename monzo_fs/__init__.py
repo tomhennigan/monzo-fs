@@ -1,15 +1,15 @@
 # coding=utf8
 
-"""Defines the various functions to support the mondo fuse filesystem."""
+"""Defines the various functions to support the Monzo fuse filesystem."""
 
 import calendar
 import datetime
 import json
 
 import diazed
-from mondofs.decorators import cache, singleton, appendnewline, to_2dp
-from mondofs.diazed import readdir, readlink, mixed
-from mondofs.mondo import MondoAPI
+from monzo_fs.decorators import cache, singleton, appendnewline, to_2dp
+from monzo_fs.diazed import readdir, readlink, mixed
+from monzo_fs.monzo import MonzoAPI
 
 
 def transaction_list_cache():
@@ -39,14 +39,14 @@ def _get_transaction(transaction_id, merchant):
     if not merchant and transaction_id in cache:
         return cache[transaction_id]
 
-    return singleton(MondoAPI).get_transaction(transaction_id, merchant)
+    return singleton(MonzoAPI).get_transaction(transaction_id, merchant)
 
 
 @readdir('/')
 @cache(datetime.timedelta(days=1))
 def list_accounts():
     """List out all the account IDs for the current user."""
-    return [a['id'] for a in singleton(MondoAPI).get_accounts()]
+    return [a['id'] for a in singleton(MonzoAPI).get_accounts()]
 
 
 @readdir('/<account>')
@@ -82,7 +82,7 @@ def transactions_in_year_month(account_id, year, month):
     date_to = datetime.datetime(year=year,
                                 month=month,
                                 day=calendar.monthrange(year, month)[1])
-    transactions = singleton(MondoAPI).list_transactions(account_id,
+    transactions = singleton(MonzoAPI).list_transactions(account_id,
                                                          date_from,
                                                          date_to)
     # Cache the result of listing the transactions so we can re-use it.
@@ -142,7 +142,7 @@ def field_from_transaction(account_id, year, month, transaction_id,
 
 @cache(datetime.timedelta(seconds=30))
 def _get_balance(account_id):
-    return singleton(MondoAPI).get_balance(account_id)
+    return singleton(MonzoAPI).get_balance(account_id)
 
 
 @readdir('/<account>/balance')

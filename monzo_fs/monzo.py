@@ -1,14 +1,14 @@
 # coding=utf8
 
-"""A wrapper for the current iteration of the Mondo API.
+"""A wrapper for the current iteration of the Monzo API.
 
 Handles tasks such as prompting the user to go through the web oauth flow,
-capturing the code from Mondo with a built in web server, exchanging the code
+capturing the code from Monzo with a built in web server, exchanging the code
 for an oauth token and re-issuing it as and when required.
 
   Typical usage example:
 
-  api = MondoAPI(client_id, client_secret)
+  api = MonzoAPI(client_id, client_secret)
   api.initialize()
   print api.list_accounts()
 """
@@ -25,8 +25,8 @@ import requests
 import rfc3339
 
 
-class MondoAPI:
-    """Wraps authenticating, calling and de-marshaling Mondo API calls."""
+class MonzoAPI:
+    """Wraps authenticating, calling and de-marshaling Monzo API calls."""
 
     def __init__(self, client_id, client_secret):
         self.client_id = client_id
@@ -57,7 +57,7 @@ class MondoAPI:
             self._authorize()
 
     def _authorize(self):
-        """Perform the initial oauth dance by redirecting the user to mondo. To
+        """Perform the initial oauth dance by redirecting the user to Monzo. To
         get an auth code that we can exchange for an oauth token.
         """
 
@@ -80,10 +80,10 @@ class MondoAPI:
         print
         print '\033[93m' + url + '\033[00m'
         print
-        print 'You\'ll need to give Mondo your email, and they\'ll send you a'
+        print 'You\'ll need to give Monzo your email, and they\'ll send you a'
         print 'confirmation email that you can use to sign in to this app.'
 
-        # Start an HTTP server to wait for the callback from Mondo. Once the
+        # Start an HTTP server to wait for the callback from Monzo. Once the
         # user has done the dance of filling in their email address, finding
         # the verification email and clicking "Authorize" in that we'll get a
         # callback.
@@ -141,7 +141,7 @@ class MondoAPI:
         return self.oauth.get('access_token', None)
 
     def _get(self, path, params=None):
-        """Executes a GET request to the mondo API.
+        """Executes a GET request to the Monzo API.
 
         :param params: An optional dictionary of parameters.
         :returns: The de-marshaled response from the API (e.g. a dict).
@@ -258,10 +258,10 @@ class HTTPServer(BaseHTTPServer.BaseHTTPRequestHandler):
         w('        <h2 class="mdl-card__title-text">Success!</h2>')
         w('      </div>')
         w('      <div class="mdl-card__supporting-text">')
-        w('        You\'ve successfully setup mondo-fs. Please navigate to the mount point in your favorite file browser to try it out!')
+        w('        You\'ve successfully setup monzo-fs. Please navigate to the mount point in your favorite file browser to try it out!')
         w('      </div>')
         w('      <div class="mdl-card__actions mdl-card--border">')
-        w('        <a href="https://github.com/tomhennigan/mondo-fs" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">')
+        w('        <a href="https://github.com/tomhennigan/monzo-fs" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">')
         w('        Learn More')
         w('        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>')
         w('      </div>')
